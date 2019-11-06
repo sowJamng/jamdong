@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Quartier" table="quartier" schema="public">
+        <id name="idQuartier" type="int">
+            <column name="id_quartier" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="commune" class="src.main.dao.Commune" fetch="select">
+            <column name="id_commune" not-null="true" />
+        </many-to-one>
+        <property name="nomQuartier" type="string">
+            <column name="nom_quartier" />
+        </property>
+        <set name="boutiques" table="boutique" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_quartier" not-null="true" />
+            </key>
+            <one-to-many class="src.main.dao.Boutique" />
+        </set>
+    </class>
+</hibernate-mapping>

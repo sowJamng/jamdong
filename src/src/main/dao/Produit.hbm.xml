@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Produit" table="produit" schema="public">
+        <id name="idProduit" type="int">
+            <column name="id_produit" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="categorie" class="src.main.dao.Categorie" fetch="select">
+            <column name="id_categorie" not-null="true" />
+        </many-to-one>
+        <many-to-one name="commercant" class="src.main.dao.Commercant" fetch="select">
+            <column name="id_pers" not-null="true" />
+        </many-to-one>
+        <many-to-one name="boutique" class="src.main.dao.Boutique" fetch="select">
+            <column name="id_boutique" not-null="true" />
+        </many-to-one>
+        <many-to-one name="format" class="src.main.dao.Format" fetch="select">
+            <column name="id_format" not-null="true" />
+        </many-to-one>
+        <many-to-one name="conditionnement" class="src.main.dao.Conditionnement" fetch="select">
+            <column name="id_conditionnement" not-null="true" />
+        </many-to-one>
+        <property name="nomProduit" type="string">
+            <column name="nom_produit" />
+        </property>
+        <property name="prixUnitaire" type="big_decimal">
+            <column name="prix_unitaire" precision="8" />
+        </property>
+        <property name="quantiteStock" type="java.lang.Integer">
+            <column name="quantite_stock" />
+        </property>
+        <property name="quantieSeuil" type="java.lang.Integer">
+            <column name="quantie_seuil" />
+        </property>
+        <set name="stocks" table="ligne_stock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_produit" not-null="true" />
+            </key>
+            <many-to-many entity-name="src.main.dao.Stock">
+                <column name="id_stock" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="ligneCommandes" table="ligne_commande" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_produit" not-null="true" />
+            </key>
+            <one-to-many class="src.main.dao.LigneCommande" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Depense" table="depense" schema="public">
+        <id name="idDepense" type="int">
+            <column name="id_depense" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="stock" class="src.main.dao.Stock" fetch="select">
+            <column name="id_stock" not-null="true" />
+        </many-to-one>
+        <many-to-one name="commercant" class="src.main.dao.Commercant" fetch="select">
+            <column name="id_pers" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

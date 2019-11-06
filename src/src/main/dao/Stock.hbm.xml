@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Stock" table="stock" schema="public">
+        <id name="idStock" type="int">
+            <column name="id_stock" />
+            <generator class="assigned" />
+        </id>
+        <property name="quantiteStock" type="java.lang.Integer">
+            <column name="quantite_stock" />
+        </property>
+        <set name="depenses" table="depense" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_stock" not-null="true" />
+            </key>
+            <one-to-many class="src.main.dao.Depense" />
+        </set>
+        <set name="produits" table="ligne_stock" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="id_stock" not-null="true" />
+            </key>
+            <many-to-many entity-name="src.main.dao.Produit">
+                <column name="id_produit" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

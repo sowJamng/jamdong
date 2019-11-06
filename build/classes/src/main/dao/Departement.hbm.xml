@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Departement" table="departement" schema="public">
+        <id name="idDepartement" type="int">
+            <column name="id_departement" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="region" class="src.main.dao.Region" fetch="select">
+            <column name="id_region" not-null="true" />
+        </many-to-one>
+        <property name="nomDpt" type="string">
+            <column name="nom_dpt" />
+        </property>
+        <set name="communes" table="commune" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_departement" not-null="true" />
+            </key>
+            <one-to-many class="src.main.dao.Commune" />
+        </set>
+    </class>
+</hibernate-mapping>

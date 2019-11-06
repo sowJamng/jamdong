@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.LigneCommande" table="ligne_commande" schema="public">
+        <composite-id name="id" class="src.main.dao.LigneCommandeId">
+            <key-property name="numeroCmd" type="int">
+                <column name="numero_cmd" />
+            </key-property>
+            <key-property name="idProduit" type="int">
+                <column name="id_produit" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="commande" class="src.main.dao.Commande" update="false" insert="false" fetch="select">
+            <column name="numero_cmd" not-null="true" />
+        </many-to-one>
+        <many-to-one name="produit" class="src.main.dao.Produit" update="false" insert="false" fetch="select">
+            <column name="id_produit" not-null="true" />
+        </many-to-one>
+        <property name="quantite" type="java.lang.Integer">
+            <column name="quantite" />
+        </property>
+        <property name="prixUnitaire" type="big_decimal">
+            <column name="prix_unitaire" precision="8" />
+        </property>
+    </class>
+</hibernate-mapping>

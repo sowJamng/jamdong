@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Facture" table="facture" schema="public">
+        <id name="numeroFacture" type="int">
+            <column name="numero_facture" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="commande" class="src.main.dao.Commande" fetch="select">
+            <column name="numero_cmd" />
+        </many-to-one>
+        <property name="tva" type="big_decimal">
+            <column name="tva" precision="8" />
+        </property>
+        <property name="etatFacture" type="string">
+            <column name="etat_facture" />
+        </property>
+        <set name="commandes" table="commande" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numero_facture" />
+            </key>
+            <one-to-many class="src.main.dao.Commande" />
+        </set>
+    </class>
+</hibernate-mapping>

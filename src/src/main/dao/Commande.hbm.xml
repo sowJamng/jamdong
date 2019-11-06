@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Commande" table="commande" schema="public">
+        <id name="numeroCmd" type="int">
+            <column name="numero_cmd" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="boutiquier" class="src.main.dao.Boutiquier" fetch="select">
+            <column name="bou_id_pers" not-null="true" />
+        </many-to-one>
+        <many-to-one name="commercant" class="src.main.dao.Commercant" fetch="select">
+            <column name="id_pers" not-null="true" />
+        </many-to-one>
+        <many-to-one name="facture" class="src.main.dao.Facture" fetch="select">
+            <column name="numero_facture" />
+        </many-to-one>
+        <property name="dateCmd" type="timestamp">
+            <column name="date_cmd" length="29" />
+        </property>
+        <property name="dateLivraisonPrevu" type="timestamp">
+            <column name="date_livraison_prevu" length="29" />
+        </property>
+        <set name="factures" table="facture" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numero_cmd" />
+            </key>
+            <one-to-many class="src.main.dao.Facture" />
+        </set>
+        <set name="ligneCommandes" table="ligne_commande" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numero_cmd" not-null="true" />
+            </key>
+            <one-to-many class="src.main.dao.LigneCommande" />
+        </set>
+    </class>
+</hibernate-mapping>

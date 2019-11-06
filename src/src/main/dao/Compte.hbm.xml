@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Compte" table="compte" schema="public">
+        <id name="numeroCmpt" type="int">
+            <column name="numero_cmpt" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="client" class="src.main.dao.Client" fetch="select">
+            <column name="id_pers" not-null="true" />
+        </many-to-one>
+        <property name="solde" type="big_decimal">
+            <column name="solde" precision="8" />
+        </property>
+        <property name="decouvert" type="big_decimal">
+            <column name="decouvert" precision="8" />
+        </property>
+    </class>
+</hibernate-mapping>

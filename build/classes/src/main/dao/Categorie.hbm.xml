@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Categorie" table="categorie" schema="public">
+        <id name="idCategorie" type="int">
+            <column name="id_categorie" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomCtg" type="string">
+            <column name="nom_ctg" />
+        </property>
+        <property name="famille" type="string">
+            <column name="famille" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <set name="produits" table="produit" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_categorie" not-null="true" />
+            </key>
+            <one-to-many class="src.main.dao.Produit" />
+        </set>
+    </class>
+</hibernate-mapping>

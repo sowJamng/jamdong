@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+ <h:head>
+	<title> Authentification</title>	
+	<h:outputStylesheet library="webjars"
+        name="bootstrap/3.3.7/css/bootstrap.min-jsf.css" />
+    <h:outputScript library="webjars"
+        name="jquery/1.11.1/jquery.js" />
+    <h:outputScript library="webjars"
+        name="bootstrap/3.3.7/js/bootstrap.js" />
+</h:head>
+<h:body>
+
+ <!--<h:form id="form1">
+ 
+<h:panelGroup   id="panel"   header="Nouveau Client"> 
+<h:panelGrid  style="position: absolute; top: 50px; left: 300px; font-size:8pt;"  columns="2"  cellpadding="5"    >
+<h:outputText    value="Nom"/>
+<h:inputText    value=" "/>
+<h:outputText    value="Prenom"/>
+<h:inputText    value=""/>
+<h:outputText    value="Adresse"/>
+<h:inputTextarea  value=""/>
+<h:outputText    value="Login"/>
+<h:inputText    value=""/>
+<h:outputText    value="Mot de passe"/>
+<h:inputText    value="   "/>
+<h:outputText    value="Telephone"/>
+<h:inputText    value=""/>
+<h:outputText    value="Poit de videlite"/>
+<h:inputText    value=""/>
+
+<h:commandButton  style="position: absolute;  left: 80px;"   styleClass="btn btn-success"   value="Valider"/>
+<h:commandButton   style="position: absolute;  left: 160px;" styleClass="btn btn-"  value="Annuler"/>
+</h:panelGrid>
+</h:panelGroup>
+</h:form>-->
+<div class="container">
+
+    <nav  class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    
+                </a>
+            </div>
+
+            <!-- Mon menu -->
+            <div class="collapse navbar-collapse"
+                id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Client</a></li>
+                    <li><a href="#">Comptes </a></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Stock</a></li>
+                    <li><a href="#"> Ventes</a></li>
+                    <li><a href="#">Voir Statistiques</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle"
+                        data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">Deconnexion <span class="caret"></span></a>
+                         
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+     
+    <div>
+          <h:form id="test">
+         
+
+        <div class="form-group">
+            <label for="name">Nom:</label>
+            <h:inputText id="nm" value="" styleClass="form-control" />
+            <h:message styleClass="label label-danger" for="name" />
+        </div>
+         <div class="form-group">
+            <label for="name">Prenom:</label>
+            <h:inputText id="prn" value="" styleClass="form-control" />
+            <h:message styleClass="label label-danger" for="name" />
+        </div>
+         <div class="form-group">
+            <label for="name">Adresse:</label>
+            <h:inputText id="Adr" value="" styleClass="form-control" />
+            <h:message styleClass="label label-danger" for="name" />
+        </div>
+         <div class="form-group">
+            <label for="name">Login:</label>
+            <h:inputText id="lg" value="" styleClass="form-control" />
+            <h:message styleClass="label label-danger" for="name" />
+        </div>
+
+        <div class="form-group">
+            <label for="hours">Mot de passe:</label>
+            <h:inputText id="Mdp" value="" styleClass="form-control" required="true" />
+            <h:message styleClass="label label-danger" for="hours" />
+        </div>
+          <div class="form-group">
+            <label for="name">Telephone:</label>
+            <h:inputText id="name" value="" styleClass="form-control" />
+            <h:message styleClass="label label-danger" for="name" />
+        </div>
+         <div class="form-group">
+            <label for="name">Point de fidelite:</label>
+            <h:inputText id="ptf" value="" styleClass="form-control" />
+            <h:message styleClass="label label-danger" for="name" />
+        </div>
+         
+        <div class="form-group">
+            <h:commandButton action="#{course.save()}"
+                styleClass="btn btn-primary" value="Save" />
+            <span> </span>
+            <h:link styleClass="btn btn-info" outcome="hello" value="Quit" />
+        </div>
+    </h:form>      
+                
+                
+        <h:messages />
+    </div>
+
+    <footer class="page-footer">
+        <div class="footer-copyright text-center py-3">
+             
+        </div>
+    </footer>
+    </div>
+ </h:body>
+</html>

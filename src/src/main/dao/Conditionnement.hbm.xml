@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Conditionnement" table="conditionnement" schema="public">
+        <id name="idConditionnement" type="int">
+            <column name="id_conditionnement" />
+            <generator class="assigned" />
+        </id>
+        <property name="descriptionCdt" type="string">
+            <column name="description_cdt" />
+        </property>
+        <set name="produits" table="produit" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_conditionnement" not-null="true" />
+            </key>
+            <one-to-many class="src.main.dao.Produit" />
+        </set>
+    </class>
+</hibernate-mapping>

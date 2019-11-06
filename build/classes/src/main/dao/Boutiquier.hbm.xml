@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 juil. 2019 09:06:27 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="src.main.dao.Boutiquier" table="boutiquier" schema="public">
+        <id name="idPers" type="int">
+            <column name="id_pers" />
+            <generator class="foreign">
+                <param name="property">personne</param>
+            </generator>
+        </id>
+        <many-to-one name="commercant" class="src.main.dao.Commercant" fetch="select">
+            <column name="com_id_pers" not-null="true" />
+        </many-to-one>
+        <one-to-one name="personne" class="src.main.dao.Personne" constrained="true"></one-to-one>
+        <property name="nom" type="string">
+            <column name="nom" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="telephone" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="adresse" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+        <set name="commandes" table="commande" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bou_id_pers" not-null="true" />
+            </key>
+            <one-to-many class="src.main.dao.Commande" />
+        </set>
+    </class>
+</hibernate-mapping>

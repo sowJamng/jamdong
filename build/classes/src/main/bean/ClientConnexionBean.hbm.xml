@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24  juin 2019 12:38:39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="src.main.dao.ClientConnexionBean" table="CLIENTCONNEXIONBEAN">
+        <id name="accordion" type="java.lang.String" access="field">
+            <column name="ACCORDION" />
+            <generator class="assigned" />
+        </id>
+        <property name="tabCourant" type="java.lang.String" access="field">
+            <column name="TABCOURANT" />
+        </property>
+        <property name="isSessionActive" type="boolean" access="field">
+            <column name="ISSESSIONACTIVE" />
+        </property>
+        <property name="url" type="java.lang.String" access="field">
+            <column name="URL" />
+        </property>
+        <many-to-one name="pers" class="src.main.dao.Personne" access="field" fetch="join">
+            <column name="PERS" />
+        </many-to-one>
+        <many-to-one name="utilisateur" class="src.main.dao.Personne" fetch="join">
+            <column name="UTILISATEUR" />
+        </many-to-one>
+        <property name="curentUser" type="java.lang.String">
+            <column name="CURENTUSER" />
+        </property>
+    </class>
+</hibernate-mapping>
